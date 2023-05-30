@@ -134,14 +134,8 @@ Object.OnsetSignalPort = &H0378
 **Parallel Port**
 
 ```visual basic
-If Object.Acc = 1 then 
-    WritePort &H0378,7
-Else If Object.Acc = 0 then 
-        WritePort &H378,8
-    Else
-        WritePort &H378,9
-	End If
-End If
+WritePort &H0378, 0
+Object.OnsetSignalData = c.GetAttrib ("Code")
 ```
 
 
@@ -149,13 +143,15 @@ End If
 **Serial Port**
 
 ```visual basic
-If target.acc=1 Then 
-    Serial.WriteByte 7
-Else Serial.WriteByte 8
-End If 
+Object.Tasks.Reset If 
+    Serial.GetState() = ebStateOpen Then
+Object.Tasks.Add Serial.CreateTask ("Object.OnsetTime", 0, "WriteByte", "(custom)", c.GetAttrib("Mark"), "Byte", True)
+End If
 
-Sleep(sleeptime)
-Serial.WriteByte 0
+If Serial.GetState() = ebStateOpen Then
+    Object.Tasks.Add Serial.CreateTask ("Object.OnsetTime", 10, "WriteByte", "(custom)", ebDigit_0, "Byte", True)
+End If
+
 ```
 
 
