@@ -1,30 +1,47 @@
 # Useful E-Prime Script
 
+|         |                           |
+| ------- | ------------------------- |
+| Title   | Useful E-Prime Script    |
+| Version | 31<sup>th</sup> May, 2023 |
 
+</br>
+</br>
+
+A summery regarding E-Prime script.
+
+</br>
 
 ## Set random interval
 
+</br>
 
+*In designing experiments, to avoid the influence of irrelevant variables caused by subject expectancy effects, it is necessary to randomize the presentation time of masked stimuli.*
 
-**Way 1**
+</br>
+
+**Method 1**
 
 ```visual basic
 Object.duration = Random (200,600) 
 ```
 
+</br>
 
-
-**Way 2**
+**Method 2**
 
 ```visual basic
 Object.duration = 2 * Random (100,300) 
 ```
 
+</br>
 
+## Have a rest during full session
+</br>
 
-## Have a rest
+*To avoid the fatigue effect caused by long-term experiments, it is necessary to set rest intervals between trials.*
 
-
+</br>
 
 Define E-Prime User Script 
 
@@ -32,9 +49,9 @@ Define E-Prime User Script
 Dim N as Integer
 ```
 
+</br>
 
-
-**Way 1**
+**Method 1**
 
 ```visual basic
 c.GetAttrib (“ListName.sample”) 
@@ -42,10 +59,9 @@ if N mod 40 = 0 Then
     msgbox (“It’s time to rest ! “Press SPACE to continue”)
 End If
 ```
+</br>
 
-
-
-**Way 2**
+**Method 2**
 
 ```visual basic
 N=N+1
@@ -56,13 +72,17 @@ Else
 End If
 ```
 
-
+</br>
 
 ## Practice or real session
+</br>
+
+*Choose between practice and formal testing, it can be automatic (based on accuracy) or manual (based on selection).*
+
+</br>
 
 
-
-**Way 1**
+**Method 1**
 
 ```visual basic
 If Object.RESP= 1 Then Goto Label1
@@ -70,26 +90,26 @@ Else
 Goto Label2
 End If
 ```
+</br>
 
-
-
-**Way 2**
+**Method 2**
 
 Define E-Prime User Script 
+
+</br>
 
 ```visual basic
 Public N as Integer
 ```
 
-
+</br>
 
 ```visual basic
 If Object.ACC=1 Then
     N = N+1
 End If
 ```
-
-
+</br>
 
 ```visual basic
 If (N/PracticeList.Size)<0.80 Then 
@@ -100,20 +120,19 @@ GoTo label4
 End If 
 ```
 
-
+</br>
 
 ## Open port
 
+</br>
 
-
-**Way 1**
+**Method 1**
 
 Experiment properties - Devices add Parallel Port
 
+</br>
 
-
-**Way 2**
-
+**Method 2**
 
 
 ```visual basic
@@ -126,10 +145,11 @@ Object.OnsetSignalPort = &H0378
 ```
 
 
+</br>
 
-## Stim marker
+## Stimulus marker
 
-
+</br>
 
 **Parallel Port**
 
@@ -138,7 +158,7 @@ WritePort &H0378, 0
 Object.OnsetSignalData = c.GetAttrib ("Code")
 ```
 
-
+</br>
 
 **Serial Port**
 
@@ -154,7 +174,7 @@ End If
 
 ```
 
-
+</br>
 
 **Socket Port**
 
@@ -164,11 +184,11 @@ Object.Tasks.Reset
 Object.Tasks.Add Socket.CreateTask("Object.OnsetTime", 0, "WriteByte", "(custom)", c.GetAttrib("Code"), "Byte", True)
 ```
 
+</br>
 
+## Response marker
 
-## Resp marker
-
-
+</br>
 
 **Parallel Port**
 
@@ -183,11 +203,13 @@ else
 End If
 ```
 
-
+</br>
 
 **Serial Port**
 
 Experiment properties - Devices add Parallel Port
+
+</br>
 
 ```visual basic
 Const sleeptime As Integer = 5
@@ -205,11 +227,13 @@ Sleep(sleeptime)
 Serial.WriteByte 0
 ```
 
-
+</br>
 
 **Socket Port**
 
 Define E-Prime User Script 
+
+</br>
 
 ```visual basic
 Const sleeptime As Integer = 5
@@ -227,30 +251,35 @@ Sleep(sleeptime)
 Socket.WriteByte 0
 ```
 
-
+</br>
 
 ## Others
 
-
+</br>
 
 **Custom response in a TextDisplay Object**
 
-
+</br>
 
 ```visual basic
 If Object.ACC = 1 Then
 
 	Feedback.Text ="Correct!" 
 	Feedback.ForeColor = Color("Blue")
-    Feedback.FontSize = 28
+    	Feedback.FontSize = 28
 
 Else
 	Feedback.Text ="Wrong!" 
 	Feedback.ForeColor = Color("DarkRed")
-    Feedback.FontSize = 28
+    	Feedback.FontSize = 28
 
 End If
 
-'For the color code pleae refer to https://shorturl.at/eiPS2
 ```
+</br>
+For the color code pleae refer to https://shorturl.at/eiPS2 (PST support site) for reference.
 
+</br>
+</br>
+
+**[TBC]**
