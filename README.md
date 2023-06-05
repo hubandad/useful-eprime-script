@@ -3,7 +3,7 @@
 |         |                           |
 | ------- | ------------------------- |
 | Title   | Useful E-Prime Script    |
-| Version | 31<sup>th</sup> May, 2023 |
+| Version | 5<sup>th</sup> June, 2023 |
 
 </br>
 </br>
@@ -280,6 +280,21 @@ End If
 For the color code pleae refer to https://shorturl.at/eiPS2 (PST support site) for reference.
 
 </br>
+</br>
+
+# E-Prime 学习资源
+
+</br>
+
+E-Prime Command Reference  https://pstnet.com/ecr/
+
+PST support service https://support.pstnet.com/hc/en-us
+
+PST YouTube Channel https://www.youtube.com/@PSTNET
+
+E-Prime Google Group https://groups.google.com/g/e-prime
+
+
 </br>
 
 **[TBC]**
