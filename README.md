@@ -282,7 +282,7 @@ For the color code pleae refer to https://shorturl.at/eiPS2 (PST support site) f
 </br>
 </br>
 
-# E-Prime 学习资源
+# E-Prime online resource
 
 </br>
 
